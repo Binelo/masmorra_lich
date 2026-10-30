@@ -1,0 +1,418 @@
+{
+  "pocao": {
+    "nome": "Poção de Vida",
+    "descricao": "Recupera 30 de vida.",
+    "tipo": "consumivel",
+    "cura": 30,
+    "valor": 10
+  },
+  "eter": {
+    "nome": "Éter",
+    "descricao": "Recupera 15 de energia.",
+    "tipo": "consumivel",
+    "energia": 15,
+    "valor": 12
+  },
+  "bomba": {
+    "nome": "Bomba",
+    "descricao": "Explode em todos os inimigos: 20 de dano de fogo (só em combate).",
+    "tipo": "consumivel",
+    "dano": 20,
+    "alcance": 99,
+    "elemento": "fogo",
+    "valor": 15
+  },
+  "espada": {
+    "nome": "Espada Afiada",
+    "descricao": "Ataque +3.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 3
+    },
+    "valor": 20
+  },
+  "adaga": {
+    "nome": "Adaga Leve",
+    "descricao": "Ataque +2, esquiva +5%.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 2,
+      "esquiva": 0.05
+    },
+    "valor": 20
+  },
+  "machado": {
+    "nome": "Machado Pesado",
+    "descricao": "Ataque +4, esquiva -5%.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 4,
+      "esquiva": -0.05
+    },
+    "valor": 25
+  },
+  "cajado": {
+    "nome": "Cajado de Brasas",
+    "descricao": "Poder mágico +3, ataque +1. Só para magos.",
+    "espaco": "arma",
+    "bonus": {
+      "poder": 3,
+      "ataque": 1
+    },
+    "classes": [
+      "Mago"
+    ],
+    "valor": 25
+  },
+  "escudo": {
+    "nome": "Escudo de Ferro",
+    "descricao": "Defesa +2.",
+    "espaco": "escudo",
+    "bonus": {
+      "defesa": 2
+    },
+    "valor": 20
+  },
+  "cota": {
+    "nome": "Cota de Malha",
+    "descricao": "Defesa +3, esquiva -4%.",
+    "espaco": "armadura",
+    "bonus": {
+      "defesa": 3,
+      "esquiva": -0.04
+    },
+    "valor": 30
+  },
+  "manto": {
+    "nome": "Manto Sombrio",
+    "descricao": "Esquiva +4%.",
+    "espaco": "armadura",
+    "bonus": {
+      "esquiva": 0.04
+    },
+    "valor": 30
+  },
+  "amuleto": {
+    "nome": "Amuleto do Vigor",
+    "descricao": "Vida máxima +6.",
+    "espaco": "acessorio",
+    "bonus": {
+      "vida_max": 6
+    },
+    "valor": 30
+  },
+  "anel": {
+    "nome": "Anel da Concentração",
+    "descricao": "Energia máxima +8.",
+    "espaco": "acessorio",
+    "bonus": {
+      "energia_max": 8
+    },
+    "valor": 20
+  },
+  "antidoto": {
+    "nome": "Antídoto",
+    "descricao": "Cura o veneno.",
+    "tipo": "consumivel",
+    "valor": 8,
+    "cura_efeito": "veneno"
+  },
+  "glandula": {
+    "nome": "Glândula de Veneno",
+    "descricao": "Use para envenenar sua arma: seus golpes envenenam (mortos-vivos e enxames são imunes).",
+    "tipo": "consumivel",
+    "envenena_arma": true,
+    "valor": 60
+  },
+  "coracao": {
+    "nome": "Coração de Troll",
+    "descricao": "Esquivar ou bloquear com sucesso cura 3 de vida (uma vez por turno).",
+    "espaco": "acessorio",
+    "bonus": {
+      "cura_defensiva": 3
+    },
+    "valor": 80
+  },
+  "lamina_flamejante": {
+    "nome": "Lâmina Flamejante",
+    "descricao": "Ataque +2. Seus golpes físicos são de fogo.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 2
+    },
+    "elemento": "fogo",
+    "valor": 60
+  },
+  "martelo": {
+    "nome": "Martelo do Trovão",
+    "descricao": "Ataque +3, 20% de chance de atordoar (chefes e mini-chefes resistem).",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 3,
+      "chance_atordoar": 0.2
+    },
+    "valor": 70
+  },
+  "adaga_vampirica": {
+    "nome": "Adaga Vampírica",
+    "descricao": "Ataque +2. Cura 30% do dano dos seus golpes.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 2,
+      "roubo_vida": 0.3
+    },
+    "valor": 60
+  },
+  "armadura_espinhos": {
+    "nome": "Armadura de Espinhos",
+    "descricao": "Defesa +1. Quem te acerta toma 3 de dano.",
+    "espaco": "armadura",
+    "bonus": {
+      "defesa": 1,
+      "espinhos": 3
+    },
+    "valor": 60
+  },
+  "pergaminho_gelo": {
+    "nome": "Pergaminho de Gelo",
+    "descricao": "Congela o inimigo: ele perde o próximo turno.",
+    "tipo": "consumivel",
+    "congelar": true,
+    "valor": 20
+  },
+  "coroa_lich": {
+    "nome": "Coroa do Lich",
+    "descricao": "Relíquia. Energia máxima +10, poder mágico +4 (só magos usam poder).",
+    "espaco": "acessorio",
+    "bonus": {
+      "energia_max": 10,
+      "poder": 4
+    },
+    "valor": 150
+  },
+  "foice_sombria": {
+    "nome": "Foice Sombria",
+    "descricao": "Relíquia. Ataque +6, cura 25% do dano dos seus golpes.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 6,
+      "roubo_vida": 0.25
+    },
+    "valor": 150
+  },
+  "manto_lich": {
+    "nome": "Manto do Lich",
+    "descricao": "Relíquia. Defesa +2, esquiva +8%.",
+    "espaco": "armadura",
+    "bonus": {
+      "defesa": 2,
+      "esquiva": 0.08
+    },
+    "valor": 150
+  },
+  "filacterio": {
+    "nome": "Filactério",
+    "descricao": "Relíquia. Energia máxima +5. Ao morrer, te revive com 40% da vida e se quebra.",
+    "espaco": "acessorio",
+    "bonus": {
+      "energia_max": 5
+    },
+    "reviver": 0.4,
+    "valor": 150
+  },
+  "lamina_gelida": {
+    "nome": "Lâmina Gélida",
+    "descricao": "Ataque +4. Golpes de gelo, 15% de chance de congelar (chefes e mini-chefes resistem).",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 4,
+      "chance_atordoar": 0.15
+    },
+    "elemento": "gelo",
+    "valor": 90
+  },
+  "tomo_inverno": {
+    "nome": "Tomo do Inverno",
+    "descricao": "Poder +2. A Bola de Fogo vira Lança de Gelo. Só para magos.",
+    "espaco": "acessorio",
+    "bonus": {
+      "poder": 2
+    },
+    "classes": [
+      "Mago"
+    ],
+    "valor": 80,
+    "troca_habilidade": {
+      "nome_habilidade": "Lança de Gelo",
+      "elemento_habilidade": "gelo"
+    }
+  },
+  "armadura_escamas": {
+    "nome": "Armadura de Escamas",
+    "descricao": "Defesa +3, resistência a fogo 40%.",
+    "espaco": "armadura",
+    "bonus": {
+      "defesa": 3,
+      "resistencia_fogo": 0.4
+    },
+    "valor": 100
+  },
+  "anel_predador": {
+    "nome": "Anel do Predador",
+    "descricao": "Crítico do Ataque Furtivo +15%. Só para ladinos.",
+    "espaco": "acessorio",
+    "bonus": {
+      "CHANCE_CRITICO": 0.15
+    },
+    "classes": [
+      "Ladino"
+    ],
+    "valor": 90
+  },
+  "manoplas_tita": {
+    "nome": "Manoplas do Titã",
+    "descricao": "O Surto de Ação dá 3 ações. Só para guerreiros.",
+    "espaco": "acessorio",
+    "bonus": {
+      "acoes_extras_habilidade": 1
+    },
+    "classes": [
+      "Guerreiro"
+    ],
+    "valor": 120
+  },
+  "pocao_grande": {
+    "nome": "Poção Grande",
+    "descricao": "Recupera 60 de vida.",
+    "tipo": "consumivel",
+    "cura": 60,
+    "valor": 25
+  },
+  "unguento": {
+    "nome": "Unguento",
+    "descricao": "Cura queimaduras.",
+    "tipo": "consumivel",
+    "cura_efeito": "queimadura",
+    "valor": 12
+  },
+  "bomba_gelo": {
+    "nome": "Bomba de Gelo",
+    "descricao": "Explode em todos os inimigos: 25 de dano de gelo e congela (só em combate).",
+    "tipo": "consumivel",
+    "dano": 25,
+    "alcance": 99,
+    "elemento": "gelo",
+    "congela_alvo": true,
+    "valor": 30
+  },
+  "escudo_torre": {
+    "nome": "Escudo de Torre",
+    "descricao": "Defesa +2, bloqueio +10%.",
+    "espaco": "escudo",
+    "bonus": {
+      "defesa": 2,
+      "reducao_bloqueio": 0.1
+    },
+    "valor": 100
+  },
+  "escama_ignarax": {
+    "nome": "Escama de Ignarax",
+    "descricao": "Relíquia. Defesa +3, resistência a fogo 50%.",
+    "espaco": "armadura",
+    "bonus": {
+      "defesa": 3,
+      "resistencia_fogo": 0.5
+    },
+    "valor": 200
+  },
+  "presa_ignarax": {
+    "nome": "Presa de Ignarax",
+    "descricao": "Relíquia. Ataque +7, golpes de fogo.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 7
+    },
+    "elemento": "fogo",
+    "valor": 200
+  },
+  "olho_ignarax": {
+    "nome": "Olho de Ignarax",
+    "descricao": "Relíquia. Energia máxima +8, poder mágico +5 (só magos usam poder).",
+    "espaco": "acessorio",
+    "bonus": {
+      "energia_max": 8,
+      "poder": 5
+    },
+    "valor": 200
+  },
+  "coracao_brasa": {
+    "nome": "Coração de Brasa",
+    "descricao": "Relíquia. Vida máxima +15, resistência a fogo 20%.",
+    "espaco": "acessorio",
+    "bonus": {
+      "vida_max": 15,
+      "resistencia_fogo": 0.2
+    },
+    "valor": 200
+  },
+  "nucleo_golem": {
+    "nome": "Núcleo do Golem",
+    "descricao": "Acessório. Vida máxima +12, defesa +2.",
+    "espaco": "acessorio",
+    "bonus": {
+      "vida_max": 12,
+      "defesa": 2
+    },
+    "valor": 120
+  },
+  "bracadeira_furia": {
+    "nome": "Braçadeira da Fúria",
+    "descricao": "Acessório. Ataque +2. Com menos de metade da vida, seus golpes causam +35% de dano.",
+    "espaco": "acessorio",
+    "bonus": {
+      "ataque": 2,
+      "furia": 0.35
+    },
+    "valor": 120
+  },
+  "coroa_lich_plus": {
+    "nome": "Coroa do Lich +",
+    "descricao": "Relíquia melhorada. Energia máxima +15, poder mágico +7 (só magos usam poder).",
+    "espaco": "acessorio",
+    "bonus": {
+      "energia_max": 15,
+      "poder": 7
+    },
+    "valor": 250
+  },
+  "foice_sombria_plus": {
+    "nome": "Foice Sombria +",
+    "descricao": "Relíquia melhorada. Ataque +9, cura 30% do dano dos seus golpes.",
+    "espaco": "arma",
+    "bonus": {
+      "ataque": 9,
+      "roubo_vida": 0.3
+    },
+    "valor": 250
+  },
+  "manto_lich_plus": {
+    "nome": "Manto do Lich +",
+    "descricao": "Relíquia melhorada. Defesa +3, esquiva +12%.",
+    "espaco": "armadura",
+    "bonus": {
+      "defesa": 3,
+      "esquiva": 0.12
+    },
+    "valor": 250
+  },
+  "chave_covil": {
+    "nome": "Chave de Bronze",
+    "descricao": "Abre o portão do covil da dragoa.",
+    "vendivel": false
+  },
+  "chave": {
+    "nome": "Chave de Osso",
+    "descricao": "Abre a porta da sala do trono.",
+    "vendivel": false
+  }
+}

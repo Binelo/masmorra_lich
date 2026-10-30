@@ -1,0 +1,256 @@
+{
+  "rato": {
+    "nome": "Rato Gigante",
+    "vida": 14,
+    "ataque": 6,
+    "defesa": 0,
+    "xp": 8,
+    "ouro": 3,
+    "esquiva": 0.25
+  },
+  "esqueleto": {
+    "nome": "Esqueleto",
+    "vida": 22,
+    "ataque": 9,
+    "defesa": 2,
+    "xp": 14,
+    "ouro": 8,
+    "esquiva": 0.05,
+    "reducao_bloqueio": 0.5,
+    "imune_veneno": true,
+    "fraquezas": {
+      "fogo": 1.25
+    }
+  },
+  "goblin": {
+    "nome": "Goblin",
+    "vida": 26,
+    "ataque": 10,
+    "defesa": 2,
+    "xp": 16,
+    "ouro": 12,
+    "esquiva": 0.2,
+    "reducao_bloqueio": 0.3
+  },
+  "zumbi": {
+    "nome": "Zumbi",
+    "vida": 34,
+    "ataque": 10,
+    "defesa": 1,
+    "xp": 18,
+    "ouro": 6,
+    "imune_veneno": true,
+    "fraquezas": {
+      "fogo": 1.25
+    }
+  },
+  "morcegos": {
+    "tipo": "enxame",
+    "nome": "Morcegos",
+    "nome_singular": "morcego",
+    "quantidade": 5,
+    "vida_cada": 4,
+    "ataque": 3,
+    "defesa": 0,
+    "esquiva": 0.15,
+    "xp": 15,
+    "ouro": 5,
+    "imune_veneno": true,
+    "dano_cada": 3
+  },
+  "aranha": {
+    "tipo": "aranha",
+    "nome": "Aranha Gigante",
+    "vida": 38,
+    "ataque": 10,
+    "defesa": 1,
+    "esquiva": 0.1,
+    "xp": 18,
+    "ouro": 10,
+    "duracao_veneno": 3,
+    "recarga_teia": 3,
+    "turnos_exposta": 2,
+    "drop": "glandula",
+    "dano_veneno": 2,
+    "mult_exposta": 1.25
+  },
+  "troll": {
+    "tipo": "troll",
+    "nome": "Troll da Ponte",
+    "vida": 75,
+    "ataque": 16,
+    "defesa": 3,
+    "xp": 25,
+    "ouro": 15,
+    "regeneracao": 10,
+    "drop": "coracao",
+    "mult_pancada": 1.2
+  },
+  "kobolds": {
+    "tipo": "kobolds",
+    "nome": "Kobolds Armadilheiros",
+    "nome_singular": "kobold",
+    "quantidade": 5,
+    "vida_cada": 14,
+    "dano_cada": 6,
+    "ataque": 1,
+    "defesa": 0,
+    "esquiva": 0.15,
+    "xp": 30,
+    "ouro": 20,
+    "a_cada": 3,
+    "dano_armadilha": 6
+  },
+  "golem": {
+    "tipo": "golem",
+    "nome": "Golem de Ferro",
+    "vida": 120,
+    "ataque": 26,
+    "defesa": 12,
+    "imune_veneno": true,
+    "fraquezas": {
+      "gelo": 1.25
+    },
+    "xp": 50,
+    "ouro": 25,
+    "limiar_rachar": 12,
+    "perda_defesa": 2,
+    "mult_esmagar": 1.7,
+    "drop": "nucleo_golem"
+  },
+  "elemental": {
+    "nome": "Elemental de Brasa",
+    "vida": 50,
+    "ataque": 13,
+    "defesa": 2,
+    "esquiva": 0.1,
+    "imune_veneno": true,
+    "fraquezas": {
+      "fogo": 0,
+      "gelo": 1.5
+    },
+    "elemento_ataque": "fogo",
+    "efeito_ao_acertar": {
+      "efeito": "queimadura",
+      "turnos": 3,
+      "dano": 2
+    },
+    "xp": 30,
+    "ouro": 12
+  },
+  "berserker": {
+    "tipo": "berserker",
+    "nome": "Anão Berserker",
+    "vida": 90,
+    "ataque": 18,
+    "defesa": 5,
+    "xp": 40,
+    "ouro": 30,
+    "furia_max": 0.6,
+    "mult_frenesi": 0.7,
+    "drop": "bracadeira_furia"
+  },
+  "mimico": {
+    "nome": "Mímico",
+    "vida": 45,
+    "ataque": 17,
+    "defesa": 3,
+    "embosca": true,
+    "xp": 25,
+    "ouro": 30
+  },
+  "morcegos_fuligem": {
+    "tipo": "enxame",
+    "nome": "Morcegos de Fuligem",
+    "nome_singular": "morcego",
+    "quantidade": 5,
+    "vida_cada": 8,
+    "dano_cada": 5,
+    "ataque": 1,
+    "defesa": 0,
+    "esquiva": 0.2,
+    "imune_veneno": true,
+    "xp": 25,
+    "ouro": 8
+  },
+  "aranha_galerias": {
+    "tipo": "aranha",
+    "nome": "Aranha das Galerias",
+    "vida": 75,
+    "ataque": 19,
+    "defesa": 3,
+    "esquiva": 0.1,
+    "xp": 30,
+    "ouro": 15,
+    "duracao_veneno": 3,
+    "dano_veneno": 3,
+    "recarga_teia": 3,
+    "turnos_exposta": 2,
+    "mult_exposta": 1.25
+  },
+  "lich": {
+    "nome": "O Lich",
+    "vida": 130,
+    "ataque": 15,
+    "defesa": 5,
+    "xp": 100,
+    "ouro": 100,
+    "chefe": true,
+    "esquiva": 0.1,
+    "especial": {
+      "texto": "conjura um RAIO SOMBRIO!",
+      "a_cada": 3,
+      "multiplicador": 3.0,
+      "ignora_defesa": true,
+      "so_esquiva_ativa": true,
+      "aviso": "começa a reunir energia sombria..."
+    },
+    "texto_derrota": "O Lich se desfaz em pó, e a coroa cai aos seus pés.\nA maldição da masmorra foi quebrada!",
+    "imune_veneno": true,
+    "fraquezas": {
+      "fogo": 1.25
+    },
+    "drop_tabela": "reliquias_lich",
+    "drop": "filacterio"
+  },
+  "capataz": {
+    "tipo": "capataz",
+    "nome": "Capataz Anão",
+    "vida": 120,
+    "ataque": 20,
+    "defesa": 6,
+    "reducao_bloqueio": 0.7,
+    "xp": 50,
+    "ouro": 40,
+    "drop": "escudo_torre",
+    "a_cada": 3,
+    "mult_martelo": 1.8,
+    "bloqueio_magia": 0.3
+  },
+  "ignarax": {
+    "tipo": "dragao",
+    "nome": "Ignarax",
+    "vida": 220,
+    "ataque": 22,
+    "defesa": 6,
+    "esquiva": 0.1,
+    "chefe": true,
+    "xp": 150,
+    "ouro": 150,
+    "fraquezas": {
+      "fogo": 0.5,
+      "gelo": 1.5
+    },
+    "a_cada": 3,
+    "mult_sopro": 1.6,
+    "mult_mergulho": 1.8,
+    "erro_em_voo": 0.5,
+    "queimadura": {
+      "turnos": 2,
+      "dano": 3
+    },
+    "drop": "escama_ignarax",
+    "drop_tabela": "reliquias_dragoa",
+    "texto_derrota": "Ignarax desaba sobre o próprio tesouro, e as brasas das escamas se apagam uma a uma.\nO calor das minas finalmente começa a ceder."
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "inicio": "entrada_minas",
+  "desenho": [
+    "                         [Covil de Ignarax]",
+    "                                 |",
+    "     [Forja]-------------[Salão dos Reis]-----------[Fornalha]",
+    "        |                        |                       |",
+    "   [Depósito]           [Barracas Kobold]         [Poço de Lava]",
+    "        |                        |                       |",
+    "    [Trilhos]-----------[Entrada das Minas]------[Loja do Kyrzathul]"
+  ],
+  "itens_espalhados": [
+    {
+      "item": "chave_covil",
+      "salas": [
+        "trilhos",
+        "deposito",
+        "forja",
+        "barracas",
+        "poco_lava",
+        "fornalha"
+      ]
+    }
+  ],
+  "salas": {
+    "entrada_minas": {
+      "nome": "Entrada das Minas",
+      "descricao": "A escada termina num túnel largo, sustentado por vigas carbonizadas. O ar é quente e tem gosto de metal. Trilhos de carrinhos somem na escuridão para o oeste.",
+      "saidas": {
+        "norte": "barracas",
+        "oeste": "trilhos",
+        "leste": "loja"
+      },
+      "inimigo": null,
+      "itens": []
+    },
+    "loja": {
+      "nome": "Loja do Kyrzathul",
+      "descricao": "Uma barraca improvisada com caixotes e um toldo rasgado. Atrás do balcão, um kobold de chapéu grande demais te encara com desprezo.",
+      "saidas": {
+        "oeste": "entrada_minas",
+        "norte": "poco_lava"
+      },
+      "inimigo": null,
+      "itens": [],
+      "mercador": {
+        "pocao_grande": 25,
+        "unguento": 12,
+        "bomba_gelo": 30,
+        "eter": 15,
+        "antidoto": 8,
+        "lamina_gelida": 90,
+        "tomo_inverno": 80,
+        "armadura_escamas": 100,
+        "anel_predador": 90,
+        "manoplas_tita": 120
+      },
+      "npc": {
+        "nome": "Kyrzathul, o Infindável",
+        "falas": [
+          "Curve-se, mortal. Você está diante de Kyrzathul, o Infindável, devorador de reinos. Os preços são fixos.",
+          "Este corpo? Uma maldição. Uma divindade invejosa me prendeu nesta forma ridícula. Mas a minha MENTE ainda é de dragão.",
+          "Ignarax? Uma filhote usurpadora. Quando eu tinha a idade dela, já tinha engolido três cavaleiros e uma catedral.",
+          "Não, não posso simplesmente voar até lá e derrotá-la. Estou... ocupado. Com a loja. Assuntos de dragão.",
+          "Às vezes eu sonho com o céu. Aí acordo e lembro que tenho medo de escada.",
+          "Se você derrotar a filhote, eu talvez considere deixar você viver quando eu recuperar minha forma verdadeira. Talvez.",
+          "Os outros kobolds me chamam de 'Kyrzinho'. Eles serão os primeiros a queimar.",
+          "Gelo. Leve gelo. Não me pergunte como eu sei a fraqueza dela. Dragões sabem essas coisas. EU sei essas coisas.",
+          "Você tem cara de quem compra uma Poção Grande. Eu tenho olhos de dragão, percebo essas coisas."
+        ],
+        "falas_abates": {
+          "Kobolds Armadilheiros": "Os kobolds das barracas... TODOS? *olha em volta* Então agora eu sou o kobold mais poderoso das minas. Digo: o DRAGÃO mais poderoso. Kobold nenhum. Eu não sou kobold. Esqueça o que ouviu.",
+          "Anão Berserker": "O anão da fornalha? Ele jogava carvão em mim. Com a pá. Eu deixava, porque um dragão não perde tempo com insetos. ...Ele está morto mesmo? Totalmente? Ótimo. Ótimo.",
+          "Capataz Anão": "O Capataz caiu? Uma vez me escondi atrás daquele escudo por três dias. Estratégia de dragão. Você não entenderia.",
+          "Golem de Ferro": "Você desmontou o golem da forja? Ele nunca aceitou ordens minhas. Não reconhecia a autoridade de um dragão ancião. Péssimo gosto, para uma panela gigante.",
+          "Elemental de Brasa": "Você apagou uma chama do rio de lava? Eu conversava com elas. Eram as únicas que me tratavam com o respeito devido. Bom, elas não falavam. Mas também não discordavam.",
+          "Aranha das Galerias": "A aranha do depósito? Eu sabia do baú que ela guardava. Claro que sabia. Só deixei pra você. Generosidade de dragão.",
+          "Morcegos de Fuligem": "Morcegos. Asas minúsculas, e voam mesmo assim. Uma afronta pessoal.",
+          "O Lich": "Você derrotou o Lich lá em cima? Hmpf. Eu derrotei sete. Antes do café. Quando eu tinha a forma verdadeira, claro."
+        }
+      }
+    },
+    "trilhos": {
+      "nome": "Trilhos Abandonados",
+      "descricao": "Carrinhos de mina virados e trilhos retorcidos pelo calor. O teto é coberto por algo escuro que se mexe e guincha.",
+      "descricao_vazia": "Carrinhos de mina virados e trilhos retorcidos pelo calor. Fuligem e asas pequenas cobrem o chão.",
+      "saidas": {
+        "leste": "entrada_minas",
+        "norte": "deposito"
+      },
+      "inimigo": "morcegos_fuligem",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "consumiveis_minas",
+          "chance": 0.6
+        }
+      ]
+    },
+    "deposito": {
+      "nome": "Depósito de Ferramentas",
+      "descricao": "Prateleiras de picaretas enferrujadas, tudo coberto de teias grossas como corda. Num canto, um baú de ferro parece intocado.",
+      "descricao_vazia": "Prateleiras de picaretas enferrujadas, tudo coberto de teias grossas como corda, agora rasgadas.",
+      "saidas": {
+        "sul": "trilhos",
+        "norte": "forja"
+      },
+      "inimigo": "aranha_galerias",
+      "itens": [],
+      "bau": {
+        "tabela": "armas_minas",
+        "chance_mimico": 0.4
+      }
+    },
+    "forja": {
+      "nome": "Forja dos Anões",
+      "descricao": "Bigornas do tamanho de mesas e um tanque de água de resfriamento ainda limpa. No centro, uma armadura gigante de ferro está de pé... e se mexe. (Depois da luta, 'beber' da água recupera vida e energia.)",
+      "descricao_vazia": "Bigornas do tamanho de mesas e um tanque de água de resfriamento ainda limpa. No centro, o golem está caído em pedaços, o núcleo apagado. ('beber' da água recupera vida e energia.)",
+      "descricao_seca": "Bigornas do tamanho de mesas e um tanque de água turva. No centro, o golem está caído em pedaços, o núcleo apagado.",
+      "saidas": {
+        "sul": "deposito",
+        "leste": "salao_reis"
+      },
+      "inimigo": "golem",
+      "itens": [],
+      "fonte": true,
+      "saque": [
+        {
+          "tabela": "armaduras_minas",
+          "chance": 0.7
+        }
+      ]
+    },
+    "barracas": {
+      "nome": "Barracas Kobold",
+      "descricao": "Tendas de couro, panelas e desenhos toscos de uma dragoa vermelha em todas as paredes. Risadinhas vêm de todos os lados.",
+      "descricao_vazia": "Tendas de couro rasgadas, panelas reviradas e desenhos toscos de uma dragoa vermelha em todas as paredes. Nenhuma risadinha agora.",
+      "saidas": {
+        "sul": "entrada_minas",
+        "norte": "salao_reis"
+      },
+      "inimigo": "kobolds",
+      "itens": [],
+      "bau": {
+        "tabela": "consumiveis_minas",
+        "chance_mimico": 0.3
+      }
+    },
+    "poco_lava": {
+      "nome": "Poço de Lava",
+      "descricao": "Uma ponte de pedra passa sobre um rio de lava. Uma das chamas se ergue, toma forma e vem na sua direção.",
+      "descricao_vazia": "Uma ponte de pedra passa sobre um rio de lava. As chamas dançam baixas, sem forma, só fogo.",
+      "saidas": {
+        "sul": "loja",
+        "norte": "fornalha"
+      },
+      "inimigo": "elemental",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "acessorios_minas",
+          "chance": 0.6
+        }
+      ]
+    },
+    "fornalha": {
+      "nome": "A Grande Fornalha",
+      "descricao": "Um forno enorme ainda arde. Um anão de barba chamuscada e olhos vermelhos larga a pá e pega dois machados.",
+      "descricao_vazia": "Um forno enorme ainda arde. Uma pá larga está jogada no chão, ao lado de manchas de fuligem e sangue.",
+      "saidas": {
+        "sul": "poco_lava",
+        "oeste": "salao_reis"
+      },
+      "inimigo": "berserker",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "consumiveis_minas",
+          "chance": 0.6
+        }
+      ]
+    },
+    "salao_reis": {
+      "nome": "Salão dos Reis",
+      "descricao": "Estátuas de reis anões, todas sem cabeça, cercam um portão de bronze ao norte. Diante dele, um anão enorme atrás de um escudo do tamanho de uma porta.",
+      "descricao_vazia": "Estátuas de reis anões, todas sem cabeça, cercam um portão de bronze ao norte. Um escudo do tamanho de uma porta jaz tombado diante dele.",
+      "saidas": {
+        "oeste": "forja",
+        "leste": "fornalha",
+        "sul": "barracas",
+        "norte": "covil"
+      },
+      "inimigo": "capataz",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "consumiveis_minas",
+          "chance": 0.5
+        }
+      ]
+    },
+    "covil": {
+      "nome": "Covil de Ignarax",
+      "descricao": "Uma caverna imensa, cheia de ouro derretido e ossos. Sobre o tesouro, uma dragoa de escamas cor de brasa abre os olhos. 'Outro rato veio roubar o que é meu.'",
+      "descricao_vazia": "Uma caverna imensa, cheia de ouro derretido e ossos. As brasas no tesouro já esfriam.",
+      "saidas": {
+        "sul": "salao_reis"
+      },
+      "inimigo": "ignarax",
+      "itens": [],
+      "trancada": "chave_covil",
+      "texto_trancada": "Um portão de bronze com uma fechadura em forma de chama. Precisa de uma chave de bronze, que deve estar em algum lugar das minas."
+    }
+  }
+}

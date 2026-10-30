@@ -1,0 +1,238 @@
+{
+  "inicio": "entrada",
+  "desenho": [
+    "                                  [Trono]",
+    "                                     |",
+    "   [Ponte]----[Cripta]          [Corredor]--[Fonte]        [Ninho]",
+    "      |           |                  |                        |",
+    "[Laboratório]--[Biblioteca]------[Salão]------[Arsenal]--[Caverna]",
+    "                                     |",
+    "                                 [Entrada]"
+  ],
+  "itens_espalhados": [
+    {
+      "item": "chave",
+      "salas": [
+        "arsenal",
+        "biblioteca",
+        "cripta",
+        "caverna",
+        "ninho",
+        "ponte"
+      ]
+    }
+  ],
+  "salas": {
+    "entrada": {
+      "nome": "Entrada da Masmorra",
+      "descricao": "Degraus de pedra descem para a escuridão. Um velho mercador se aquece numa pequena fogueira ao lado da porta.",
+      "saidas": {
+        "norte": "salao"
+      },
+      "inimigo": null,
+      "itens": [],
+      "mercador": {
+        "pocao": 10,
+        "eter": 12,
+        "bomba": 15,
+        "adaga": 20,
+        "machado": 25,
+        "cajado": 25,
+        "manto": 30,
+        "cota": 30,
+        "amuleto": 30,
+        "anel": 20,
+        "lamina_flamejante": 60,
+        "martelo": 70,
+        "adaga_vampirica": 60,
+        "armadura_espinhos": 60
+      }
+    },
+    "salao": {
+      "nome": "Grande Salão",
+      "descricao": "Colunas rachadas sustentam um teto alto. Algo se mexe entre os escombros. Passagens levam para todos os lados.",
+      "descricao_vazia": "Colunas rachadas sustentam um teto alto. Entre os escombros, nada mais se mexe. Passagens levam para todos os lados.",
+      "saidas": {
+        "sul": "entrada",
+        "norte": "corredor",
+        "leste": "arsenal",
+        "oeste": "biblioteca"
+      },
+      "inimigo": "rato",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "consumiveis",
+          "chance": 0.3
+        }
+      ]
+    },
+    "arsenal": {
+      "nome": "Arsenal Abandonado",
+      "descricao": "Suportes de armas enferrujadas cobrem as paredes. Ossos estalam no canto da sala.",
+      "descricao_vazia": "Suportes de armas enferrujadas cobrem as paredes. No canto, uma pilha de ossos que não vai mais se levantar.",
+      "saidas": {
+        "oeste": "salao",
+        "leste": "caverna"
+      },
+      "inimigo": "esqueleto",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "armas",
+          "chance": 1.0
+        }
+      ]
+    },
+    "caverna": {
+      "nome": "Caverna Úmida",
+      "descricao": "Água pinga do teto baixo. Centenas de olhinhos vermelhos brilham no escuro, e um guincho agudo enche o ar.",
+      "descricao_vazia": "Água pinga do teto baixo. O chão está forrado de morcegos caídos, e agora só se ouve o pingar das gotas.",
+      "saidas": {
+        "oeste": "arsenal",
+        "norte": "ninho"
+      },
+      "inimigo": "morcegos",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "consumiveis",
+          "chance": 0.5
+        }
+      ]
+    },
+    "ninho": {
+      "nome": "Ninho de Teias",
+      "descricao": "Fios grossos e pegajosos cobrem tudo. Casulos do tamanho de gente pendem do teto, alguns ainda com mochilas de aventureiros.",
+      "descricao_vazia": "Fios grossos e pegajosos cobrem tudo. Casulos do tamanho de gente pendem do teto, alguns ainda com mochilas de aventureiros. Nada mais se move nas teias.",
+      "saidas": {
+        "sul": "caverna"
+      },
+      "inimigo": "aranha",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "acessorios",
+          "chance": 0.6
+        },
+        {
+          "tabela": "consumiveis",
+          "chance": 0.5
+        }
+      ]
+    },
+    "biblioteca": {
+      "nome": "Biblioteca Mofada",
+      "descricao": "Estantes caídas e livros apodrecendo. Um cheiro de ervas vem de uma mesa de alquimia. Uma escada desce para o norte.",
+      "saidas": {
+        "leste": "salao",
+        "norte": "cripta",
+        "oeste": "laboratorio"
+      },
+      "inimigo": null,
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "consumiveis",
+          "chance": 1.0
+        },
+        {
+          "tabela": "consumiveis",
+          "chance": 0.6
+        }
+      ]
+    },
+    "laboratorio": {
+      "nome": "Laboratório do Alquimista",
+      "descricao": "Frascos borbulham sobre chamas azuis. Uma alquimista de óculos grossos ergue os olhos: 'Cliente! Tenho exatamente o que você precisa.'",
+      "saidas": {
+        "leste": "biblioteca",
+        "norte": "ponte"
+      },
+      "inimigo": null,
+      "itens": [],
+      "mercador": {
+        "antidoto": 8,
+        "pocao": 12,
+        "eter": 12,
+        "bomba": 15,
+        "pergaminho_gelo": 20
+      }
+    },
+    "cripta": {
+      "nome": "Cripta",
+      "descricao": "Caixões abertos. Um gemido ecoa, e algo se levanta de um deles.",
+      "descricao_vazia": "Caixões abertos. Num deles, o morto finalmente descansa de vez.",
+      "saidas": {
+        "sul": "biblioteca",
+        "oeste": "ponte"
+      },
+      "inimigo": "zumbi",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "acessorios",
+          "chance": 0.5
+        }
+      ]
+    },
+    "ponte": {
+      "nome": "Ponte de Pedra",
+      "descricao": "Uma ponte estreita cruza um abismo sem fundo. Do outro lado, uma criatura enorme e verrugosa se levanta, arrastando um porrete.",
+      "descricao_vazia": "Uma ponte estreita cruza um abismo sem fundo. Do outro lado, um porrete enorme ficou largado sobre as tábuas.",
+      "saidas": {
+        "leste": "cripta",
+        "sul": "laboratorio"
+      },
+      "inimigo": "troll",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "armaduras",
+          "chance": 0.5
+        }
+      ]
+    },
+    "corredor": {
+      "nome": "Corredor das Tochas",
+      "descricao": "Tochas azuladas iluminam uma porta enorme ao norte, decorada com caveiras. Há um brilho suave a leste.",
+      "descricao_vazia": "Tochas azuladas iluminam uma porta enorme ao norte, decorada com caveiras. Há um brilho suave a leste.",
+      "saidas": {
+        "sul": "salao",
+        "norte": "trono",
+        "leste": "fonte"
+      },
+      "inimigo": "goblin",
+      "itens": [],
+      "saque": [
+        {
+          "tabela": "armaduras",
+          "chance": 1.0
+        }
+      ]
+    },
+    "fonte": {
+      "nome": "Fonte Encantada",
+      "descricao": "Uma fonte de água prateada brilha no centro da sala. Digite 'beber' para se recuperar.",
+      "descricao_seca": "Uma fonte de pedra no centro da sala. A água, antes prateada, agora está escura e parada.",
+      "saidas": {
+        "oeste": "corredor"
+      },
+      "inimigo": null,
+      "itens": [],
+      "fonte": true
+    },
+    "trono": {
+      "nome": "Sala do Trono",
+      "descricao": "Num trono de ossos, uma figura esquelética de coroa abre os olhos brilhantes. 'Mais um herói para minha coleção...'",
+      "descricao_vazia": "Um trono de ossos, vazio. Uma pilha de pó cinzento é tudo o que resta do seu dono.",
+      "saidas": {
+        "sul": "corredor"
+      },
+      "inimigo": "lich",
+      "itens": [],
+      "trancada": "chave",
+      "texto_trancada": "A porta está trancada. Parece precisar de uma chave feita de osso. Talvez ela esteja em algum lugar da masmorra..."
+    }
+  }
+}

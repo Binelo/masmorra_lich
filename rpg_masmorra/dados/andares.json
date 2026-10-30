@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cripta",
+    "nome": "A Cripta do Lich",
+    "mapa": "cripta.json",
+    "intro": "Degraus de pedra descem para a escuridão. Dizem que um Lich governa este lugar.",
+    "conclusao": "Atrás do trono de ossos, uma escada estreita desce. O ar fica quente e cheira a fuligem.",
+    "forca_lich_caido": 1.0
+  },
+  {
+    "id": "minas",
+    "nome": "As Minas de Ferro-Negro",
+    "mapa": "minas.json",
+    "intro": "As minas dos anões, tomadas por Ignarax, uma dragoa jovem, e pelos kobolds que a servem. Tudo aqui é fogo e metal.",
+    "conclusao": "Com Ignarax derrotada, as minas ficam em silêncio.",
+    "forca_lich_caido": 1.5
+  }
+]

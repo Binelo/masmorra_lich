@@ -1,0 +1,71 @@
+{
+  "armas": {
+    "espada": 5,
+    "adaga": 4,
+    "machado": 2,
+    "cajado": 2,
+    "lamina_flamejante": 1,
+    "martelo": 1,
+    "adaga_vampirica": 1
+  },
+  "armaduras": {
+    "escudo": 5,
+    "cota": 2,
+    "manto": 2,
+    "armadura_espinhos": 1
+  },
+  "acessorios": {
+    "anel": 3,
+    "amuleto": 2
+  },
+  "consumiveis": {
+    "pocao": 6,
+    "eter": 3,
+    "bomba": 2,
+    "antidoto": 3,
+    "pergaminho_gelo": 1
+  },
+  "reliquias_lich": {
+    "coroa_lich": 1,
+    "foice_sombria": 1,
+    "manto_lich": 1
+  },
+  "armas_minas": {
+    "lamina_gelida": 2,
+    "machado": 2,
+    "martelo": 1,
+    "adaga_vampirica": 1,
+    "lamina_flamejante": 1
+  },
+  "armaduras_minas": {
+    "armadura_escamas": 2,
+    "armadura_espinhos": 1,
+    "manto": 1,
+    "cota": 1
+  },
+  "acessorios_minas": {
+    "anel_predador": 1,
+    "manoplas_tita": 1,
+    "tomo_inverno": 1,
+    "amuleto": 1,
+    "anel": 1
+  },
+  "consumiveis_minas": {
+    "pocao_grande": 4,
+    "pocao": 3,
+    "unguento": 3,
+    "bomba_gelo": 2,
+    "eter": 2,
+    "pergaminho_gelo": 1
+  },
+  "reliquias_dragoa": {
+    "presa_ignarax": 1,
+    "olho_ignarax": 1,
+    "coracao_brasa": 1
+  },
+  "reliquias_lich_plus": {
+    "coroa_lich_plus": 1,
+    "foice_sombria_plus": 1,
+    "manto_lich_plus": 1
+  }
+}

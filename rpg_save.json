@@ -1,0 +1,103 @@
+{
+  "classe": "Guerreiro",
+  "heroi": {
+    "nome": "Binelo",
+    "vida_max": 53,
+    "vida": 49,
+    "ataque": 13,
+    "defesa": 4,
+    "energia_max": 18,
+    "energia": 12,
+    "nivel": 2,
+    "xp": 25,
+    "ouro": 17,
+    "inventario": {
+      "pocao": 3,
+      "espada": 1
+    }
+  },
+  "sala": "cripta",
+  "mapa": {
+    "entrada": {
+      "nome": "Entrada da Masmorra",
+      "descricao": "Degraus de pedra descem para a escuridão. Um velho mercador se aquece numa pequena fogueira ao lado da porta.",
+      "saidas": {
+        "norte": "salao"
+      },
+      "inimigo": null,
+      "item": null,
+      "mercador": true
+    },
+    "salao": {
+      "nome": "Grande Salão",
+      "descricao": "Colunas rachadas sustentam um teto alto. Algo se mexe entre os escombros. Passagens levam para todos os lados.",
+      "saidas": {
+        "sul": "entrada",
+        "norte": "corredor",
+        "leste": "arsenal",
+        "oeste": "biblioteca"
+      },
+      "inimigo": null,
+      "item": null
+    },
+    "arsenal": {
+      "nome": "Arsenal Abandonado",
+      "descricao": "Suportes de armas enferrujadas cobrem as paredes. Ossos estalam no canto da sala.",
+      "saidas": {
+        "oeste": "salao"
+      },
+      "inimigo": null,
+      "item": null
+    },
+    "biblioteca": {
+      "nome": "Biblioteca Mofada",
+      "descricao": "Estantes caídas e livros apodrecendo. Um cheiro de ervas vem de uma mesa de alquimia. Uma escada desce para o norte.",
+      "saidas": {
+        "leste": "salao",
+        "norte": "cripta"
+      },
+      "inimigo": null,
+      "item": null
+    },
+    "cripta": {
+      "nome": "Cripta",
+      "descricao": "Caixões abertos. Um gemido ecoa, e algo se levanta de um deles.",
+      "saidas": {
+        "sul": "biblioteca"
+      },
+      "inimigo": null,
+      "item": "chave"
+    },
+    "corredor": {
+      "nome": "Corredor das Tochas",
+      "descricao": "Tochas azuladas iluminam uma porta enorme ao norte, decorada com caveiras. Há um brilho suave a leste.",
+      "saidas": {
+        "sul": "salao",
+        "norte": "trono",
+        "leste": "fonte"
+      },
+      "inimigo": "goblin",
+      "item": "escudo"
+    },
+    "fonte": {
+      "nome": "Fonte Encantada",
+      "descricao": "Uma fonte de água prateada brilha no centro da sala. Digite 'beber' para se recuperar.",
+      "saidas": {
+        "oeste": "corredor"
+      },
+      "inimigo": null,
+      "item": null,
+      "fonte": true
+    },
+    "trono": {
+      "nome": "Sala do Trono",
+      "descricao": "Num trono de ossos, uma figura esquelética de coroa abre os olhos brilhantes. 'Mais um herói para minha coleção...'",
+      "saidas": {
+        "sul": "corredor"
+      },
+      "inimigo": "lich",
+      "item": null,
+      "trancada": true
+    }
+  }
+}

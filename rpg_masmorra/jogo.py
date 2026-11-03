@@ -9,6 +9,7 @@ import caido
 import dados
 from itens import comprar, menu_equipar, menu_usar, mostrar_inventario, pegar_itens, usar_item, vender
 from mapa import DIRECOES, criar_mapa, descrever_sala, mostrar_mapa, sala_inicial, tentar_andar
+import inimigos
 from inimigos import criar_inimigo
 from personagens import CLASSES
 from save import salvar
@@ -249,6 +250,7 @@ def jogar_campanha(heroi, andar, sala_atual=None, mapa=None):
         print(f"  {dados.info_andar(andar)['intro']}")
 
     while True:
+        inimigos.forca_do_andar = dados.info_andar(andar).get("forca_inimigos", {})
         resultado = jogar(heroi, sala_atual, mapa, andar)
         if resultado == "morreu" and heroi.revivido:
             caido.registrar(heroi, andar)       # morreu depois do Filactério: vira o Desmorto

@@ -13,6 +13,7 @@
 # ============================================================================
 
 import json
+from datetime import datetime
 import os
 
 import dados
@@ -23,13 +24,14 @@ ATIVO = True                                   # o simulador desliga isso
 MELHORIAS = dados.carregar_json("santuario.json")
 
 # Como os Ecos são calculados no fim da partida
-ECOS_POR_XP = 1 / 5            # 1 Eco a cada 5 de XP ganho
-ECOS_POR_ANDAR = 20            # por andar concluído
-ECOS_POR_VITORIA = 40          # bônus por vencer a campanha inteira
+ECOS_POR_XP = 1 / 6            # 1 Eco a cada 6 de XP ganho
+ECOS_POR_ANDAR = 15            # por andar concluído
+ECOS_POR_VITORIA = 30          # bônus por vencer a campanha inteira
 
 
 def carregar():
-    padrao = {"ecos": 0, "melhorias": {}, "partidas": 0, "vitorias": 0, "ecos_totais": 0}
+    padrao = {"ecos": 0, "melhorias": {}, "partidas": 0, "vitorias": 0, "ecos_totais": 0,
+              "historico": []}
     if not ATIVO or not os.path.exists(ARQUIVO):
         return padrao
     try:
@@ -87,6 +89,21 @@ def calcular_ecos(heroi, venceu):
     return ecos
 
 
+def resumo_da_partida(heroi, resultado, ecos, progresso):
+    """O que fica guardado de cada partida (útil pra analisar o balanceamento)."""
+    return {
+        "data": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "heroi": heroi.nome, "classe": type(heroi).__name__, "resultado": resultado,
+        "nivel": heroi.nivel, "andares_concluidos": heroi.andares_concluidos,
+        "morto_por": heroi.ultimo_inimigo if resultado == "morreu" else None,
+        "ecos": ecos, "melhorias": dict(progresso["melhorias"]),
+        "equipamento": {e: c for e, c in heroi.equipamento.items() if c},
+        "mochila": {c: q for c, q in heroi.inventario.items() if q > 0},
+        "ouro": heroi.ouro,
+        "lutas": heroi.lutas,
+    }
+
+
 def fim_de_partida(heroi, resultado):
     """Chamado quando a partida acaba de vez (morreu, venceu ou abandonou)."""
     progresso = carregar()
@@ -96,6 +113,8 @@ def fim_de_partida(heroi, resultado):
     progresso["partidas"] += 1
     if resultado == "venceu":
         progresso["vitorias"] += 1
+    progresso["historico"].append(resumo_da_partida(heroi, resultado, ecos, progresso))
+    progresso["historico"] = progresso["historico"][-30:]   # guarda só as últimas 30
     salvar(progresso)
 
     print("\n  ---------------- FIM DA PARTIDA ----------------")

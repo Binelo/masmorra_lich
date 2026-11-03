@@ -211,9 +211,27 @@ def pedir_acao(heroi, inimigo, extra=None):
         return True
 
 
+CURAS = ("pocao", "pocao_grande")
+
+
 def combate(heroi, inimigo):
-    """Retorna 'venceu', 'fugiu' ou 'morreu'."""
+    """Retorna 'venceu', 'fugiu' ou 'morreu'. Anota um resumo da luta em heroi.lutas
+    (vai para o histórico de partidas no progresso.json)."""
+    vida_antes = heroi.vida
+    curas_antes = sum(heroi.inventario.get(c, 0) for c in CURAS)
+    resultado = lutar(heroi, inimigo)
+    heroi.lutas.append({
+        "inimigo": inimigo.nome, "resultado": resultado, "nivel": heroi.nivel,
+        "vida": f"{vida_antes} -> {heroi.vida}/{heroi.vida_max}",
+        "pocoes": curas_antes - sum(heroi.inventario.get(c, 0) for c in CURAS),
+        "turnos": heroi.turnos_na_luta,
+    })
+    return resultado
+
+
+def lutar(heroi, inimigo):
     print(f"\n  !!! {inimigo.texto_aparece()} !!!")
+    heroi.turnos_na_luta = 0
     heroi.preparar_para_combate()
     heroi.ultimo_inimigo = inimigo.nome
     turno_inimigo = 0          # só conta quando o inimigo age (marca o ritmo dos especiais)
@@ -227,6 +245,7 @@ def combate(heroi, inimigo):
 
     while True:
         # ---- turno do herói ----
+        heroi.turnos_na_luta += 1
         heroi.curou_no_turno = False
         preso = heroi.efeitos.pop("preso", None)
         tonto = heroi.efeitos.pop("atordoado", None)

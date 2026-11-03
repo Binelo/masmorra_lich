@@ -1,0 +1,281 @@
+{
+  "ecos": 236,
+  "melhorias": {
+    "vigor": 1,
+    "treino": 1,
+    "couraca": 1,
+    "foco": 1,
+    "alforje": 1,
+    "heranca": 1
+  },
+  "partidas": 3,
+  "vitorias": 2,
+  "ecos_totais": 441,
+  "historico": [
+    {
+      "data": "2026-11-03 10:50",
+      "heroi": "binelo",
+      "classe": "Guerreiro",
+      "resultado": "morreu",
+      "nivel": 4,
+      "andares_concluidos": [],
+      "morto_por": "O Lich",
+      "ecos": 23,
+      "melhorias": {},
+      "equipamento": {
+        "arma": "adaga",
+        "armadura": "armadura_espinhos",
+        "acessorio": "coracao"
+      },
+      "mochila": {
+        "eter": 2,
+        "glandula": 1
+      },
+      "ouro": 59,
+      "lutas": [
+        {
+          "inimigo": "Rato Gigante",
+          "resultado": "venceu",
+          "nivel": 1,
+          "vida": "45 -> 39/45",
+          "pocoes": 0,
+          "turnos": 3
+        },
+        {
+          "inimigo": "Esqueleto",
+          "resultado": "venceu",
+          "nivel": 2,
+          "vida": "39 -> 53/53",
+          "pocoes": 0,
+          "turnos": 4
+        },
+        {
+          "inimigo": "Morcegos",
+          "resultado": "venceu",
+          "nivel": 2,
+          "vida": "53 -> 23/53",
+          "pocoes": 0,
+          "turnos": 5
+        },
+        {
+          "inimigo": "Goblin",
+          "resultado": "venceu",
+          "nivel": 3,
+          "vida": "53 -> 61/61",
+          "pocoes": 0,
+          "turnos": 6
+        },
+        {
+          "inimigo": "Zumbi",
+          "resultado": "venceu",
+          "nivel": 3,
+          "vida": "61 -> 53/61",
+          "pocoes": 0,
+          "turnos": 3
+        },
+        {
+          "inimigo": "Troll da Ponte",
+          "resultado": "venceu",
+          "nivel": 4,
+          "vida": "53 -> 69/69",
+          "pocoes": 0,
+          "turnos": 9
+        },
+        {
+          "inimigo": "Aranha Gigante",
+          "resultado": "venceu",
+          "nivel": 4,
+          "vida": "69 -> 44/69",
+          "pocoes": 0,
+          "turnos": 4
+        },
+        {
+          "inimigo": "O Lich",
+          "resultado": "morreu",
+          "nivel": 4,
+          "vida": "69 -> 0/69",
+          "pocoes": 1,
+          "turnos": 9
+        }
+      ]
+    },
+    {
+      "data": "2026-11-03 11:34",
+      "heroi": "binelo",
+      "classe": "Guerreiro",
+      "resultado": "venceu",
+      "nivel": 9,
+      "andares_concluidos": [
+        "cripta",
+        "minas"
+      ],
+      "morto_por": null,
+      "ecos": 209,
+      "melhorias": {
+        "vigor": 1,
+        "treino": 1,
+        "couraca": 1,
+        "foco": 1,
+        "alforje": 1,
+        "heranca": 1
+      },
+      "equipamento": {
+        "arma": "foice_sombria",
+        "escudo": "escudo_torre",
+        "armadura": "armadura_escamas",
+        "acessorio": "filacterio",
+        "acessorio_2": "manoplas_tita"
+      },
+      "mochila": {
+        "pocao": 4,
+        "bomba": 1,
+        "anel": 1,
+        "unguento": 1,
+        "lamina_gelida": 1,
+        "nucleo_golem": 1,
+        "bracadeira_furia": 1,
+        "escama_ignarax": 1,
+        "olho_ignarax": 1
+      },
+      "ouro": 426,
+      "lutas": [
+        {
+          "inimigo": "Rato Gigante",
+          "resultado": "venceu",
+          "nivel": 1,
+          "vida": "50 -> 37/50",
+          "pocoes": 0,
+          "turnos": 6
+        },
+        {
+          "inimigo": "Esqueleto",
+          "resultado": "venceu",
+          "nivel": 2,
+          "vida": "37 -> 58/58",
+          "pocoes": 0,
+          "turnos": 3
+        },
+        {
+          "inimigo": "Morcegos",
+          "resultado": "venceu",
+          "nivel": 2,
+          "vida": "58 -> 28/58",
+          "pocoes": 0,
+          "turnos": 4
+        },
+        {
+          "inimigo": "Goblin",
+          "resultado": "venceu",
+          "nivel": 3,
+          "vida": "28 -> 66/66",
+          "pocoes": 0,
+          "turnos": 4
+        },
+        {
+          "inimigo": "Zumbi",
+          "resultado": "venceu",
+          "nivel": 3,
+          "vida": "66 -> 61/66",
+          "pocoes": 0,
+          "turnos": 2
+        },
+        {
+          "inimigo": "Troll da Ponte",
+          "resultado": "venceu",
+          "nivel": 4,
+          "vida": "61 -> 74/74",
+          "pocoes": 0,
+          "turnos": 8
+        },
+        {
+          "inimigo": "Aranha Gigante",
+          "resultado": "venceu",
+          "nivel": 4,
+          "vida": "74 -> 57/74",
+          "pocoes": 0,
+          "turnos": 4
+        },
+        {
+          "inimigo": "O Lich",
+          "resultado": "venceu",
+          "nivel": 5,
+          "vida": "74 -> 82/82",
+          "pocoes": 2,
+          "turnos": 11
+        },
+        {
+          "inimigo": "Elemental de Brasa",
+          "resultado": "venceu",
+          "nivel": 6,
+          "vida": "82 -> 90/90",
+          "pocoes": 0,
+          "turnos": 2
+        },
+        {
+          "inimigo": "Kobolds Armadilheiros",
+          "resultado": "venceu",
+          "nivel": 6,
+          "vida": "90 -> 72/90",
+          "pocoes": 0,
+          "turnos": 3
+        },
+        {
+          "inimigo": "Morcegos de Fuligem",
+          "resultado": "venceu",
+          "nivel": 6,
+          "vida": "72 -> 66/90",
+          "pocoes": 0,
+          "turnos": 3
+        },
+        {
+          "inimigo": "Aranha das Galerias",
+          "resultado": "venceu",
+          "nivel": 7,
+          "vida": "66 -> 98/98",
+          "pocoes": 0,
+          "turnos": 2
+        },
+        {
+          "inimigo": "Mímico",
+          "resultado": "venceu",
+          "nivel": 7,
+          "vida": "98 -> 98/98",
+          "pocoes": 0,
+          "turnos": 1
+        },
+        {
+          "inimigo": "Golem de Ferro",
+          "resultado": "venceu",
+          "nivel": 7,
+          "vida": "98 -> 91/98",
+          "pocoes": 0,
+          "turnos": 5
+        },
+        {
+          "inimigo": "Capataz Anão",
+          "resultado": "venceu",
+          "nivel": 8,
+          "vida": "91 -> 106/106",
+          "pocoes": 0,
+          "turnos": 7
+        },
+        {
+          "inimigo": "Anão Berserker",
+          "resultado": "venceu",
+          "nivel": 8,
+          "vida": "106 -> 106/106",
+          "pocoes": 0,
+          "turnos": 2
+        },
+        {
+          "inimigo": "Ignarax",
+          "resultado": "venceu",
+          "nivel": 9,
+          "vida": "106 -> 114/114",
+          "pocoes": 0,
+          "turnos": 7
+        }
+      ]
+    }
+  ]
+}

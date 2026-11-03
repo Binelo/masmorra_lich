@@ -21,6 +21,7 @@ from collections import defaultdict
 
 import batalha
 import caido
+import itens
 import dados
 import progresso
 import golpes
@@ -74,10 +75,81 @@ ultimo_texto = ""
 ITEM_DA_CLASSE = {"Guerreiro": "armadura_escamas", "Mago": "tomo_inverno", "Ladino": "anel_predador"}
 
 ESTRATEGIAS = {
+    "joga_bem": "joga bem (equipa, vende, compra, cura)",
     "segue_dica": "segue as dicas dos inimigos",
     "ignora": "ignora as dicas",
     "so_ataca": "só ataca (e toma poção)",
 }
+
+
+# ---------------------------------------------------------------- robô "joga bem"
+# Joga como uma pessoa atenta: segue as dicas, equipa o melhor que achar, vende o
+# que sobra, compra poções, cura entre as lutas e gasta bombas nos chefes.
+
+PESOS = {"ataque": 3, "defesa": 3, "vida_max": 0.6, "esquiva": 50, "reducao_bloqueio": 25,
+         "energia_max": 0.4, "poder": 2.5, "CHANCE_CRITICO": 30, "roubo_vida": 25,
+         "cura_defensiva": 3, "chance_atordoar": 15, "espinhos": 1.5, "resistencia_fogo": 8,
+         "furia": 12, "acoes_extras_habilidade": 15}
+
+
+def nota_do_item(heroi, chave):
+    """Quanto um equipamento vale pra ESTE herói (pra decidir o que equipar)."""
+    if chave is None:
+        return 0
+    item = itens.ITENS[chave]
+    if not itens.pode_equipar(heroi, chave):
+        return -1
+    nota = 0
+    for atributo, valor in item.get("bonus", {}).items():
+        if atributo == "poder" and not hasattr(heroi, "poder"):
+            continue
+        nota += PESOS.get(atributo, 1) * valor
+    nota += 20 if item.get("reviver") else 0
+    nota += 2 if item.get("elemento") else 0
+    nota += 15 if item.get("troca_habilidade") else 0
+    return nota
+
+
+def equipar_o_melhor(heroi, luta):
+    melhorou = True
+    while melhorou:
+        melhorou = False
+        for chave in [c for c, q in heroi.inventario.items() if q > 0 and itens.eh_equipamento(c)]:
+            espacos = itens.espacos_possiveis(chave)
+            pior = min(espacos, key=lambda e: nota_do_item(heroi, heroi.equipamento.get(e)))
+            if nota_do_item(heroi, chave) > nota_do_item(heroi, heroi.equipamento.get(pior)) + 0.5:
+                luta["trocar"] = str(espacos.index(pior) + 1)
+                itens.equipar(heroi, chave)
+                melhorou = True
+                break
+
+
+def curar_fora_de_combate(heroi):
+    while heroi.vida < heroi.vida_max * 0.6:
+        falta = heroi.vida_max - heroi.vida
+        ordem = ("pocao_grande", "pocao") if falta >= 50 else ("pocao", "pocao_grande")
+        chave = next((c for c in ordem if heroi.inventario.get(c, 0) > 0), None)
+        if not chave:
+            return
+        itens.usar_item(heroi, chave)
+
+
+def fazer_compras(heroi, mercador):
+    """Vende o equipamento que sobrou na mochila e compra poções (e bombas de gelo)."""
+    for chave, qtd in list(heroi.inventario.items()):
+        preco = itens.preco_venda(chave)
+        if qtd > 0 and itens.eh_equipamento(chave) and preco:
+            heroi.inventario[chave] = 0
+            heroi.ouro += preco * qtd
+    desejos = [("pocao_grande", 4), ("pocao", 4), ("bomba_gelo", 2), ("antidoto", 1), ("unguento", 1)]
+    comprou = True
+    while comprou:
+        comprou = False
+        for chave, maximo in desejos:
+            if chave in mercador and heroi.inventario.get(chave, 0) < maximo and heroi.ouro >= mercador[chave]:
+                heroi.ouro -= mercador[chave]
+                itens.adicionar_item(heroi, chave)
+                comprou = True
 
 
 def escolher_acao(estrategia, heroi, inimigo, texto_recente, luta):
@@ -95,7 +167,21 @@ def escolher_acao(estrategia, heroi, inimigo, texto_recente, luta):
         tem_energia = False
     vem_especial = golpes.DICA_ESQUIVAR in texto_recente or golpes.DICA_BLOQUEAR in texto_recente
 
-    if estrategia == "segue_dica" and vem_especial:
+    if estrategia == "joga_bem":
+        if vem_especial and tem("pergaminho_gelo") and inimigo.chefe:
+            return usar("pergaminho_gelo")       # congela bem na hora do especial
+        limite = 0.5 if inimigo.chefe else 0.4       # contra chefe, cura mais cedo
+        if heroi.vida < heroi.vida_max * (0.25 if vem_especial else limite):
+            falta = heroi.vida_max - heroi.vida
+            for cura in (("pocao_grande", "pocao") if falta >= 45 else ("pocao", "pocao_grande")):
+                if tem(cura):
+                    return usar(cura)
+        if (inimigo.chefe or inimigo.resiste_controle) and not vem_especial:
+            for bomba in ("bomba_gelo", "bomba"):
+                elemento = itens.ITENS[bomba]["elemento"]
+                if tem(bomba) and inimigo.fraquezas.get(elemento, 1) >= 1:
+                    return usar(bomba)
+    if estrategia in ("segue_dica", "joga_bem") and vem_especial:
         defesa = "4" if golpes.DICA_ESQUIVAR in texto_recente else "5"
         if heroi.acoes_extras_habilidade and tem_energia and batalha.SURTO_PERMITE_DEFESA:
             luta["defesa_no_fim"] = defesa      # Surto: ataca e termina se defendendo
@@ -163,14 +249,26 @@ def jogar_partida(classe, estrategia, semente, melhorias=None):
         elif luta["inimigo"] is not None and p.startswith("Ação extra"):
             acao = acao_extra(heroi, p, luta)
         elif p == "Trocar qual?":
-            acao = "1"
+            acao = luta.pop("trocar", "1")
         elif luta["inimigo"] is not None and p == "Item:":
             acao = luta.pop("item", "pocao")
         else:
             acao = next(comandos)            # StopIteration quando a rota acaba
+            if estrategia == "joga_bem" and acao in ("n", "s", "l", "o"):
+                with contextlib.redirect_stdout(io.StringIO()):
+                    equipar_o_melhor(heroi, luta)
+                    if sala_atual["sala"] and sala_atual["sala"].get("mercador"):
+                        fazer_compras(heroi, sala_atual["sala"]["mercador"])
+                    curar_fora_de_combate(heroi)
         saida.write(prompt)
         lido_ate = len(saida.getvalue())
         return acao
+
+    sala_atual = {"sala": None}
+    descrever_original = jogo.descrever_sala
+    def descrever_e_lembrar(sala):
+        sala_atual["sala"] = sala
+        descrever_original(sala)
 
     combate_original = batalha.combate
     def combate_medido(h, inimigo):
@@ -183,14 +281,14 @@ def jogar_partida(classe, estrategia, semente, melhorias=None):
             luta["inimigo"] = None
 
     input_original = builtins.input
-    builtins.input, batalha.combate = input_falso, combate_medido
+    builtins.input, batalha.combate, jogo.descrever_sala = input_falso, combate_medido, descrever_e_lembrar
     try:
         with contextlib.redirect_stdout(saida):
             jogo.jogar_campanha(heroi, dados.PRIMEIRO_ANDAR)
     except StopIteration:
         pass
     finally:
-        builtins.input, batalha.combate = input_original, combate_original
+        builtins.input, batalha.combate, jogo.descrever_sala = input_original, combate_original, descrever_original
 
     texto = saida.getvalue()
     global ultimo_texto
@@ -240,24 +338,24 @@ def main():
                 r = chegaram(resultados[estrategia, nome])
                 linha += f"{sum(andar in c for _, _, c in r) / len(r):>11.0%}" if r else f"{'-':>11}"
             print(linha)
-        linha = f"{'seguindo as dicas: chega ao chefe':<36}"
+        linha = f"{'jogando bem: chega ao chefe':<36}"
         for nome in CLASSES:
-            r = chegaram(resultados["segue_dica", nome])
+            r = chegaram(resultados["joga_bem", nome])
             linha += f"{sum(chefe in l for _, l, _ in r) / len(r):>11.0%}" if r else f"{'-':>11}"
         print(linha)
 
-        # curva de dificuldade do andar (seguindo as dicas)
+        # curva de dificuldade do andar (jogando bem)
         inimigos_do_andar = []
         for sala in dados.MAPAS[andar]["salas"].values():
             if sala.get("inimigo"):
                 nome_inimigo = dados.INIMIGOS[sala["inimigo"]]["nome"]
                 if nome_inimigo not in inimigos_do_andar:
                     inimigos_do_andar.append(nome_inimigo)
-        print("\nDano recebido em cada luta (% da vida máxima) e turnos, seguindo as dicas:")
+        print("\nDano recebido em cada luta (% da vida máxima) e turnos, jogando bem:")
         for inimigo in inimigos_do_andar:
             linha = f"{inimigo[:20]:<22}"
             for nome in CLASSES:
-                valores = [l[inimigo] for _, l, _ in resultados["segue_dica", nome] if inimigo in l]
+                valores = [l[inimigo] for _, l, _ in resultados["joga_bem", nome] if inimigo in l]
                 if valores:
                     dano = sum(v[0] for v in valores) / len(valores)
                     turnos = sum(v[1] for v in valores) / len(valores)

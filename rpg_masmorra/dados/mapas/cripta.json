@@ -12,14 +12,7 @@
   "itens_espalhados": [
     {
       "item": "chave",
-      "salas": [
-        "arsenal",
-        "biblioteca",
-        "cripta",
-        "caverna",
-        "ninho",
-        "ponte"
-      ]
+      "salas": ["arsenal", "biblioteca", "cripta", "caverna", "ninho", "ponte"]
     }
   ],
   "salas": {
@@ -172,7 +165,7 @@
       "saque": [
         {
           "tabela": "acessorios",
-          "chance": 0.5
+          "chance": 0.7
         }
       ]
     },
@@ -189,7 +182,7 @@
       "saque": [
         {
           "tabela": "armaduras",
-          "chance": 0.5
+          "chance": 0.6
         }
       ]
     },

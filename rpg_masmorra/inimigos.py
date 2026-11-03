@@ -536,6 +536,9 @@ TIPOS = {"enxame": Enxame, "aranha": Aranha, "troll": Troll,
 # Ajuste geral de dificuldade: multiplica a vida e o dano de TODOS os inimigos
 # do inimigos.json. 1.0 = os valores do arquivo.
 FORCA_GERAL = {"vida": 1.2, "ataque": 1.15}
+# ...e um ajuste por andar ("forca_inimigos" no andares.json), trocado pelo
+# jogo.jogar_campanha a cada andar novo.
+forca_do_andar = {"vida": 1.0, "ataque": 1.0}
 ATRIBUTOS_DA_FORCA = {"vida": ["vida", "vida_cada"], "ataque": ["ataque", "dano_cada", "dano_armadilha"]}
 
 
@@ -544,6 +547,7 @@ def criar_inimigo(chave):
     # pop("tipo") tira o tipo dos dados e escolhe a classe (Inimigo se não tiver).
     dados_inimigo = dict(dados.INIMIGOS[chave])
     for grupo, fator in FORCA_GERAL.items():
+        fator *= forca_do_andar.get(grupo, 1.0)
         for atributo in ATRIBUTOS_DA_FORCA[grupo]:
             if atributo in dados_inimigo and fator != 1:
                 dados_inimigo[atributo] = max(1, round(dados_inimigo[atributo] * fator))

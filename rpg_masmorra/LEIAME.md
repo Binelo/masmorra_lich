@@ -168,24 +168,35 @@ Em `personagens.py`: subclasse de `Heroi` com `nome_habilidade`, `custo_habilida
 - **Morte permanente.** `salvar` é só pra pausar: grava e fecha o jogo. Ao continuar,
   o save é apagado (fechar o jogo no meio = perder a partida). Morrer, vencer ou
   abandonar (`sair` sem salvar) encerra a partida.
-- **Ecos.** No fim de toda partida: 1 Eco a cada 5 de XP, +20 por andar concluído,
-  +40 por vencer tudo (`progresso.py`).
+- **Ecos.** No fim de toda partida: 1 Eco a cada 6 de XP, +15 por andar concluído,
+  +30 por vencer tudo (`progresso.py`). Morrer no Lich rende ~20; vencer tudo, ~150.
+- **Subir de nível** recupera os 8 de vida nova + 25% da vida máxima (não cura tudo),
+  e toda a energia. `CURA_AO_SUBIR` no `personagens.py`.
 - **Santuário** (menu inicial): melhorias permanentes compradas com Ecos, aplicadas
   a todo herói novo. Ficam em `dados/santuario.json`:
   ```json
-  {"id": "vigor", "nome": "Vigor", "descricao": "...", "atributo": "vida_max", "por_nivel": 5,
-   "custos": [20, 35, 55, 80, 110]}
+  {"id": "vigor", "nome": "Vigor", "descricao": "...", "atributo": "vida_max", "por_nivel": 4,
+   "custos": [30, 50, 75, 105, 140]}
   ```
   (também aceita `"item"`, `"ouro"` e `"tabela_inicial"` no lugar de `"atributo"`).
 - **Fontes** só podem ser bebidas uma vez.
-- **Dificuldade geral:** `FORCA_GERAL` no `inimigos.py` multiplica vida e dano de todos
-  os inimigos do JSON (hoje 1.2 de vida e 1.15 de dano).
+- **Dificuldade:** `FORCA_GERAL` no `inimigos.py` multiplica vida e dano de todos os
+  inimigos do JSON (1.2 de vida, 1.15 de dano), e `"forca_inimigos"` no `andares.json`
+  ajusta cada andar por cima disso (cripta 1.1/1.0, minas 1.2/1.25).
+- **Histórico:** o `progresso.json` guarda as últimas 30 partidas (classe, resultado,
+  quem te matou, equipamento, mochila e um resumo de cada luta: vida antes/depois,
+  poções gastas e turnos). Bom para analisar o balanceamento depois.
 
 ## Depois de mudar números
 Rode `py simular.py` (herói novo, sem melhorias) e `py simular.py 300 max` (todas as
-melhorias do Santuário). Metas atuais, seguindo as dicas dos inimigos:
-- sem melhorias: ~30-50% vencem o Lich, ~5-15% vencem as Minas também;
-- com tudo comprado: ~90-100%.
+melhorias do Santuário). O robô de referência é o "joga bem": segue as dicas, equipa o
+melhor item, vende o que sobra, compra poções, cura entre as lutas e usa bombas nos chefes.
+Metas atuais com ele:
+- sem melhorias: ~35-40% vencem o Lich, ~10-20% vencem as Minas também;
+- algumas melhorias (~150 Ecos): ~65% vencem o Lich;
+- com tudo comprado: ~90-100% vencem o Lich, ~90% vencem tudo.
+Atenção: as lutas são sensíveis a atributos. +1 de ataque ou +5 de vida já mudam
+a chance de vencer o Lich em ~10 pontos, então mexa nos números aos poucos.
 Como os itens são sorteados, rode com bastante partidas (`py simular.py 500` ou mais).
 
 ## Relíquias do Lich

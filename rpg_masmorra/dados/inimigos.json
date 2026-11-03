@@ -225,7 +225,7 @@
     "drop": "escudo_torre",
     "a_cada": 3,
     "mult_martelo": 1.8,
-    "bloqueio_magia": 0.3
+    "bloqueio_magia": 0.15
   },
   "ignarax": {
     "tipo": "dragao",

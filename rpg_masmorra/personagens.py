@@ -138,12 +138,16 @@ class Heroi(Personagem):
         self.xp_total = 0              # todo o XP ganho na partida (vira Ecos no fim)
         self.andares_concluidos = []
         self.ultimo_inimigo = None     # com quem lutou por último (quem te matou, se morrer)
+        self.lutas = []                # resumo de cada luta (vai para o histórico)
+        self.turnos_na_luta = 0
         # Atributos que só vêm de equipamento (via "bonus" no itens.json):
         self.roubo_vida = 0.0          # fração do dano causado que volta como vida
         self.chance_atordoar = 0.0     # chance de o golpe fazer o inimigo perder o turno
         self.espinhos = 0              # dano devolvido a quem te acerta
         self.resistencia_fogo = 0.0    # fração do dano de fogo ignorada (0.4 = -40%)
         self.furia = 0.0               # dano extra dos golpes com menos de metade da vida
+
+    CURA_AO_SUBIR = 0.25
 
     def xp_para_subir(self):
         return self.nivel * 15
@@ -165,11 +169,14 @@ class Heroi(Personagem):
         self.ataque += 2
         self.defesa += 1
         self.energia_max += 3
-        self.vida = self.vida_max
+        # Não cura tudo (senão subir de nível no meio de uma luta difícil salva sempre):
+        # ganha os 8 de vida nova + CURA_AO_SUBIR da vida máxima. A energia enche.
+        antes = self.vida
+        self.vida = min(self.vida_max, self.vida + 8 + round(self.vida_max * self.CURA_AO_SUBIR))
         self.energia = self.energia_max
         print(f"\n  *** {self.nome} subiu para o nível {self.nivel}! ***")
-        print("  Vida +8, Ataque +2, Defesa +1, Energia +3, Energia por turno +1. "
-              "Vida e energia restauradas!")
+        print(f"  Vida +8, Ataque +2, Defesa +1, Energia +3, Energia por turno +1. "
+              f"Recupera {self.vida - antes} de vida e toda a energia!")
 
     def recuperar_energia(self, valor):
         self.energia = min(self.energia_max, self.energia + valor)
@@ -263,7 +270,7 @@ class Mago(Heroi):
     descricao = "Frágil, mas com magia poderosa. Habilidade: dano mágico que ignora defesa."
 
     PODER_INICIAL = 18
-    PODER_POR_NIVEL = 3
+    PODER_POR_NIVEL = 4
 
     def __init__(self, nome):
         super().__init__(nome, vida_max=40, ataque=6, defesa=1, energia_max=30)

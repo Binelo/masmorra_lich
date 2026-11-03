@@ -1,16 +1,9 @@
 [
-  {"id": "vigor", "nome": "Vigor", "descricao": "+5 de vida máxima inicial",
-   "atributo": "vida_max", "por_nivel": 5, "custos": [20, 35, 55, 80, 110]},
-  {"id": "treino", "nome": "Treino", "descricao": "+1 de ataque inicial",
-   "atributo": "ataque", "por_nivel": 1, "custos": [30, 55, 90]},
-  {"id": "couraca", "nome": "Couraça", "descricao": "+1 de defesa inicial",
-   "atributo": "defesa", "por_nivel": 1, "custos": [40, 80]},
-  {"id": "foco", "nome": "Foco", "descricao": "+3 de energia máxima inicial",
-   "atributo": "energia_max", "por_nivel": 3, "custos": [20, 40, 65]},
-  {"id": "alforje", "nome": "Alforje", "descricao": "+1 poção de vida inicial",
-   "item": "pocao", "por_nivel": 1, "custos": [25, 50, 80]},
-  {"id": "bolsa", "nome": "Bolsa de Moedas", "descricao": "+15 de ouro inicial",
-   "ouro": 15, "por_nivel": 1, "custos": [15, 30, 50]},
-  {"id": "heranca", "nome": "Herança", "descricao": "Começa com uma arma aleatória (da tabela de armas da cripta)",
-   "tabela_inicial": "armas", "por_nivel": 1, "custos": [70]}
+  {"id": "vigor", "nome": "Vigor", "descricao": "+4 de vida máxima inicial", "atributo": "vida_max", "por_nivel": 4, "custos": [30, 50, 75, 105, 140]},
+  {"id": "treino", "nome": "Treino", "descricao": "+1 de ataque inicial", "atributo": "ataque", "por_nivel": 1, "custos": [60, 110, 170]},
+  {"id": "couraca", "nome": "Couraça", "descricao": "+1 de defesa inicial", "atributo": "defesa", "por_nivel": 1, "custos": [70, 140]},
+  {"id": "foco", "nome": "Foco", "descricao": "+3 de energia máxima inicial", "atributo": "energia_max", "por_nivel": 3, "custos": [25, 45, 70]},
+  {"id": "alforje", "nome": "Alforje", "descricao": "+1 poção de vida inicial", "item": "pocao", "por_nivel": 1, "custos": [35, 65, 100]},
+  {"id": "bolsa", "nome": "Bolsa de Moedas", "descricao": "+15 de ouro inicial", "ouro": 15, "por_nivel": 1, "custos": [20, 40, 60]},
+  {"id": "heranca", "nome": "Herança", "descricao": "Começa com uma arma aleatória (da tabela de armas da cripta)", "tabela_inicial": "armas", "por_nivel": 1, "custos": [100]}
 ]
